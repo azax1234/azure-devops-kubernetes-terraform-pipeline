@@ -19,6 +19,8 @@ stages:
     steps:
     - bash: "echo Second Build job"
 - stage: DevDeploy
+  dependsOn:
+  - Build
   jobs:
   - job: DevDeployjob
     steps:
@@ -29,6 +31,7 @@ stages:
     steps:
     - bash: echo QADeploy job
 - stage: NFTDeploy
+  dependsOn: Build
   jobs:
   - job: NFTDeployjob
     steps:
